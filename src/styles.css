@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #2f2f2b;
+  background: #f6f3ec;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 18% 14%, rgba(233, 216, 184, 0.42), transparent 28rem),
+    radial-gradient(circle at 82% 22%, rgba(221, 228, 226, 0.5), transparent 26rem),
+    linear-gradient(180deg, #f8f7f2 0%, #f6f3ec 42%, #efede6 100%);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.23;
+  background-image:
+    linear-gradient(rgba(47, 47, 43, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 47, 43, 0.025) 1px, transparent 1px);
+  background-size: 38px 38px, 42px 42px;
+  mask-image: radial-gradient(circle at 50% 36%, black, transparent 78%);
+}
+
+::selection {
+  background: rgba(183, 146, 106, 0.24);
+}
+
+.breathing-glow {
+  animation: breathe 5.4s ease-in-out infinite;
+}
+
+.slow-spin {
+  animation: spin 8s linear infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    opacity: 0.42;
+    transform: scale(0.985);
+  }
+  50% {
+    opacity: 0.72;
+    transform: scale(1.015);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(320px, 1fr);
+  gap: clamp(2rem, 7vw, 8rem);
+}
+
+@media (max-width: 900px) {
+  .section-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
