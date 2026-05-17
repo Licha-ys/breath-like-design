@@ -1,3 +1,3 @@
 export function getProductImage(product) {
-  return product.image;
+  return product.archiveImage || product.imageCutout || product.image;
 }

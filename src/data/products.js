@@ -1,4 +1,5 @@
 const BASE = import.meta.env.BASE_URL;
+const asset = (path) => `${BASE}${path.replace(/^\/+/, "")}`;
 
 export const products = [
   {
@@ -11,7 +12,9 @@ export const products = [
     cnTitle: "壁挂式 CD 播放器",
     brand: "MUJI",
     year: "1999",
-    image: `${BASE}products/wall-cd-player.png?v=2`,
+    image: asset("products/wall-cd-player.png?v=2"),
+    imageCutout: asset("products/wall-cd-player.png?v=2"),
+    archiveImage: asset("products/wall-cd-player.png?v=2"),
     sourcePage: "https://naotofukasawa.com/projects/540/",
     shortLine: "声音像空气一样被打开。",
     description:
@@ -29,7 +32,9 @@ export const products = [
     cnTitle: "±0 加湿器",
     brand: "±0",
     year: "2003",
-    image: `${BASE}products/humidifier.png?v=2`,
+    image: asset("products/humidifier.png?v=2"),
+    imageCutout: asset("products/humidifier.png?v=2"),
+    archiveImage: asset("products/humidifier.png?v=2"),
     sourcePage: "https://naotofukasawa.com/projects/365/",
     shortLine: "它改变的不是物，而是人呼吸到的空气。",
     description:
@@ -47,7 +52,9 @@ export const products = [
     cnTitle: "INFOBAR 手机",
     brand: "au KDDI",
     year: "2003",
-    image: `${BASE}products/infobar.png?v=2`,
+    image: asset("products/infobar.png?v=2"),
+    imageCutout: asset("products/infobar.png?v=2"),
+    archiveImage: asset("products/infobar.png?v=2"),
     sourcePage: "https://naotofukasawa.com/projects/392/",
     shortLine: "普通的形态，也可以拥有清晰的个性。",
     description:
@@ -65,7 +72,9 @@ export const products = [
     cnTitle: "Hiroshima 扶手椅",
     brand: "maruni",
     year: "2008",
-    image: `${BASE}products/hiroshima-chair.png?v=2`,
+    image: asset("products/hiroshima-chair.png?v=2"),
+    imageCutout: asset("products/hiroshima-chair.png?v=2"),
+    archiveImage: asset("products/hiroshima-chair.png?v=2"),
     sourcePage: "https://naotofukasawa.com/projects/487/",
     shortLine: "好的椅子不是要求身体适应它，而是让身体自然安放。",
     description:
@@ -83,7 +92,9 @@ export const products = [
     cnTitle: "Pao 玻璃台灯",
     brand: "HAY",
     year: "2020",
-    image: `${BASE}products/pao-lamp.png?v=2`,
+    image: asset("products/pao-lamp.png?v=2"),
+    imageCutout: asset("products/pao-lamp.png?v=2"),
+    archiveImage: asset("products/pao-lamp.png?v=2"),
     sourcePage: "https://naotofukasawa.com/projects/3645/",
     shortLine: "设计不打扰空间，只让空间慢慢变亮。",
     description:
