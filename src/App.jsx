@@ -5,6 +5,7 @@ import Section from "./components/Section.jsx";
 import DesignerProfile from "./components/DesignerProfile.jsx";
 import BehaviorLab from "./components/BehaviorLab.jsx";
 import ProductInteractionSections from "./components/ProductInteractionSections.jsx";
+import RelationshipSection from "./components/RelationshipSection.jsx";
 import TimelineSection from "./components/TimelineSection.jsx";
 import ConceptDictionary from "./components/ConceptDictionary.jsx";
 import EasternHarmony from "./components/EasternHarmony.jsx";
@@ -134,6 +135,7 @@ export default function App() {
       <DesignerProfile />
       <BehaviorLab />
       <ProductInteractionSections />
+      <RelationshipSection />
       <TimelineSection />
       <ConceptDictionary />
       <EasternHarmony />

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Section from "./Section.jsx";
 
 const keywords = ["日常", "无意识", "身体记忆", "普通", "克制", "调和"];
+const portraitUrl = "https://upload.wikimedia.org/wikipedia/commons/4/44/Naoto_Fukasawa.jpg";
 
 export default function DesignerProfile() {
   return (
@@ -29,16 +30,16 @@ export default function DesignerProfile() {
         </motion.div>
 
         <motion.div
-          className="relative min-h-[420px]"
+          className="relative min-h-[520px]"
           initial={{ opacity: 0 }}
           transition={{ duration: 1.2, delay: 0.15, ease: "easeInOut" }}
           viewport={{ once: true, amount: 0.35 }}
           whileInView={{ opacity: 1 }}
         >
-          <div className="breathing-glow absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-warm/25 blur-3xl" />
-          <svg className="absolute inset-x-0 top-24 h-40 w-full" viewBox="0 0 680 180">
+          <div className="breathing-glow pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-warm/25 blur-3xl" />
+          <svg className="pointer-events-none absolute inset-x-0 top-20 h-40 w-full" viewBox="0 0 680 180">
             <motion.path
-              animate={{ pathLength: [0.35, 1, 0.35], opacity: [0.28, 0.62, 0.28] }}
+              animate={{ pathLength: [0.35, 1, 0.35], opacity: [0.22, 0.5, 0.22] }}
               d="M40 95 C120 52 185 130 265 92 C345 54 410 128 492 91 C564 58 610 74 640 95"
               fill="none"
               stroke="#C9C4B8"
@@ -47,7 +48,29 @@ export default function DesignerProfile() {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             />
           </svg>
-          <div className="absolute inset-x-0 bottom-10 grid grid-cols-2 gap-x-8 gap-y-7 md:grid-cols-3">
+
+          <figure className="relative mx-auto w-40 border border-line/45 bg-rice/45 p-2 backdrop-blur-sm md:w-44 lg:w-48">
+            <div className="aspect-[3/4] overflow-hidden bg-paper">
+              <img
+                alt="Naoto Fukasawa portrait"
+                className="h-full w-full object-cover opacity-90 grayscale mix-blend-multiply"
+                src={portraitUrl}
+              />
+            </div>
+            <figcaption className="mt-4 text-xs leading-6 text-ash/65">
+              Image source:{" "}
+              <a
+                className="border-b border-line transition-colors duration-500 hover:text-ink"
+                href="https://commons.wikimedia.org/wiki/File:Naoto_Fukasawa.jpg"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Wikimedia Commons / Wikipedia
+              </a>
+            </figcaption>
+          </figure>
+
+          <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-7 md:grid-cols-3">
             {keywords.map((word, index) => (
               <motion.div
                 className="border-t border-line/55 pt-4"
