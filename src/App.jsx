@@ -2,10 +2,25 @@ import React from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import BreathLine from "./components/BreathLine.jsx";
 import Section from "./components/Section.jsx";
+import DesignerProfile from "./components/DesignerProfile.jsx";
 import BehaviorLab from "./components/BehaviorLab.jsx";
 import ProductInteractionSections from "./components/ProductInteractionSections.jsx";
+import TimelineSection from "./components/TimelineSection.jsx";
+import ConceptDictionary from "./components/ConceptDictionary.jsx";
+import EasternHarmony from "./components/EasternHarmony.jsx";
 import ProductArchive from "./components/ProductArchive.jsx";
-import { chapters } from "./data/content.js";
+
+const navItems = [
+  { id: "home", title: "像呼吸一样" },
+  { id: "designer-profile", title: "设计师档案" },
+  { id: "behavior-lab", title: "无意识行为实验室" },
+  { id: "product-interactions", title: "单独产品交互页" },
+  { id: "timeline", title: "时间中的日常" },
+  { id: "concept-dictionary", title: "概念词典" },
+  { id: "eastern-harmony", title: "东方的调和" },
+  { id: "product-archive", title: "真实产品档案室" },
+  { id: "ending", title: "当设计消失，生活继续" }
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
@@ -30,11 +45,11 @@ function ProgressRail() {
         />
       </div>
       <div className="flex flex-col gap-4" aria-hidden="true">
-        {chapters.map((chapter) => (
+        {navItems.map((item) => (
           <span
             className="h-1.5 w-1.5 rounded-full border border-line/80 bg-rice/60 transition-colors duration-700 hover:bg-wood/70"
-            key={chapter.id}
-            title={chapter.title}
+            key={item.id}
+            title={item.title}
           />
         ))}
       </div>
@@ -116,8 +131,12 @@ export default function App() {
         <BodyCue />
       </Section>
 
+      <DesignerProfile />
       <BehaviorLab />
       <ProductInteractionSections />
+      <TimelineSection />
+      <ConceptDictionary />
+      <EasternHarmony />
       <ProductArchive />
 
       <Section id="ending" className="pb-28">

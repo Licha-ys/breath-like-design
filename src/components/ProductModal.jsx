@@ -52,13 +52,31 @@ export default function ProductModal({ product, source, onClose, onNext, onPrev 
           </p>
           <h2 className="mt-5 text-4xl font-light leading-tight text-ink">{product.cnName}</h2>
           <p className="mt-3 text-lg font-light text-ash">{product.name}</p>
-          <p className="mt-6 text-sm tracking-[0.2em] text-ash/70">
-            对应行为：{product.behavior}
-          </p>
+
+          <div className="mt-7 grid gap-3 border-y border-line/45 py-5 text-sm leading-6 text-ash md:grid-cols-2">
+            <p>产品名：{product.name}</p>
+            <p>中文名：{product.cnName}</p>
+            <p>年份：{product.year}</p>
+            <p>合作品牌：{product.brand}</p>
+            <p>对应动作：{product.behavior}</p>
+            <p>对应理念：{product.primaryConcept}</p>
+          </div>
+
           <p className="mt-10 border-l border-line/70 pl-5 text-2xl font-light leading-10 text-ink/85">
             {product.shortLine}
           </p>
           <p className="mt-8 text-base font-light leading-8 text-ash">{product.description}</p>
+
+          <div className="mt-8 space-y-4 text-base font-light leading-8 text-ash">
+            <p>
+              <span className="text-ink/75">设计特点：</span>
+              {product.designFeature}
+            </p>
+            <p>
+              <span className="text-ink/75">一句话总结：</span>
+              {product.summary}
+            </p>
+          </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
             {product.keywords.map((word) => (

@@ -4,6 +4,7 @@ const asset = (path) => `${BASE}${path.replace(/^\/+/, "")}`;
 export const products = [
   {
     id: "pull",
+    sourceId: "wall-cd-player",
     action: "拉",
     behavior: "拉",
     name: "Wall mounted CD Player",
@@ -16,14 +17,18 @@ export const products = [
     imageCutout: asset("products/wall-cd-player.png?v=2"),
     archiveImage: asset("products/wall-cd-player.png?v=2"),
     sourcePage: "https://naotofukasawa.com/projects/540/",
+    primaryConcept: "Without Thought",
+    designFeature: "将 CD 播放器转化为接近墙上换气扇的形态。",
+    summary: "声音像空气一样被打开。",
     shortLine: "声音像空气一样被打开。",
     description:
-      "深泽直人将 CD 播放器设计成接近墙上换气扇的形态。用户拉下细绳，圆盘开始旋转，声音被打开。这个动作来自日常生活中的身体记忆，不需要重新学习。",
+      "深泽直人将 CD 播放器设计成接近墙上换气扇的形态。用户拉下细绳，圆盘开始转动，声音被打开。这个动作来自日常生活中的身体记忆，不需要重新学习。",
     keywords: ["身体记忆", "拉绳", "声音", "空气", "无意识操作"],
     concepts: ["Without Thought", "Behavior", "Air"]
   },
   {
     id: "approach",
+    sourceId: "humidifier",
     action: "靠近",
     behavior: "靠近",
     name: "Humidifier",
@@ -36,14 +41,18 @@ export const products = [
     imageCutout: asset("products/humidifier.png?v=2"),
     archiveImage: asset("products/humidifier.png?v=2"),
     sourcePage: "https://naotofukasawa.com/projects/365/",
+    primaryConcept: "Harmony",
+    designFeature: "以圆润、低存在感的形态改变空气和身体感受。",
+    summary: "它改变的不是物，而是人呼吸到的空气。",
     shortLine: "它改变的不是物，而是人呼吸到的空气。",
     description:
-      "这件加湿器以圆润、柔和、低存在感的形态进入空间。它的重点不是展示技术，而是让空气、湿度与身体感受自然发生变化。",
+      "这件加湿器不强调机器本身，而是通过圆润、柔和、低存在感的形态，安静地改变空气、湿度与身体感受。",
     keywords: ["空气", "湿度", "身体感受", "低存在感", "环境"],
-    concepts: ["Super Normal", "Atmosphere", "Body"]
+    concepts: ["Harmony", "Atmosphere", "Body"]
   },
   {
     id: "press",
+    sourceId: "infobar",
     action: "按",
     behavior: "按",
     name: "INFOBAR",
@@ -56,14 +65,18 @@ export const products = [
     imageCutout: asset("products/infobar.png?v=2"),
     archiveImage: asset("products/infobar.png?v=2"),
     sourcePage: "https://naotofukasawa.com/projects/392/",
+    primaryConcept: "Super Normal",
+    designFeature: "用清晰矩形、大面积按键和有秩序的配色，让手机重新变得容易识别和操作。",
+    summary: "普通的形态，也可以拥有清晰的个性。",
     shortLine: "普通的形态，也可以拥有清晰的个性。",
     description:
-      "INFOBAR 通过清晰矩形、大面积按键和有秩序的配色，让手机重新回到容易识别与操作的状态。",
+      "INFOBAR 通过清晰矩形、大面积按键和有秩序的配色，让手机重新回到容易识别与操作的状态。它的差异来自普通结构中的微小变化。",
     keywords: ["熟悉形态", "矩形", "按键", "色彩秩序", "普通中的差异"],
     concepts: ["Super Normal", "Interface", "Familiarity"]
   },
   {
     id: "sit",
+    sourceId: "hiroshima-chair",
     action: "坐下",
     behavior: "坐下",
     name: "Hiroshima Arm Chair",
@@ -76,14 +89,18 @@ export const products = [
     imageCutout: asset("products/hiroshima-chair.png?v=2"),
     archiveImage: asset("products/hiroshima-chair.png?v=2"),
     sourcePage: "https://naotofukasawa.com/projects/487/",
+    primaryConcept: "Outline",
+    designFeature: "通过温润木材和连续曲线回应人的坐姿、手臂和背部。",
+    summary: "好的椅子让身体自然安放。",
     shortLine: "好的椅子不是要求身体适应它，而是让身体自然安放。",
     description:
-      "Hiroshima Arm Chair 以温润木材和连续曲线回应人的坐姿、手臂与背部。它的设计感并不来自夸张造型，而来自身体尺度与长期使用中的自然贴合。",
+      "Hiroshima Arm Chair 以温润木材和连续曲线回应人的坐姿、手臂与背部。它的设计感不来自夸张造型，而来自身体尺度与长期使用中的自然贴合。",
     keywords: ["身体尺度", "木材", "曲线", "触感", "长期使用"],
     concepts: ["Outline", "Body", "Mingei"]
   },
   {
     id: "light",
+    sourceId: "pao-lamp",
     action: "点亮",
     behavior: "点亮",
     name: "Pao Glass Table Lamp",
@@ -96,9 +113,12 @@ export const products = [
     imageCutout: asset("products/pao-lamp.png?v=2"),
     archiveImage: asset("products/pao-lamp.png?v=2"),
     sourcePage: "https://naotofukasawa.com/projects/3645/",
+    primaryConcept: "Harmony",
+    designFeature: "通过柔和光感和简洁轮廓弱化技术存在，让空间变得更温和。",
+    summary: "设计不打扰空间，只让空间慢慢变亮。",
     shortLine: "设计不打扰空间，只让空间慢慢变亮。",
     description:
-      "Pao 灯通过柔和光感与简洁轮廓弱化技术存在，让空间本身变得更柔和。",
+      "Pao 灯通过柔和光感与简洁轮廓弱化技术存在，让空间本身变得更柔和。它不是强调物体本身，而是通过光去调和空间感受。",
     keywords: ["柔光", "氛围", "隐藏技术", "空间调和", "温暖"],
     concepts: ["Harmony", "Atmosphere", "Light"]
   }

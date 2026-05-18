@@ -19,6 +19,7 @@ export default function ProductArchive() {
     setActiveId(id);
     setSelectedId(id);
   };
+
   const move = (direction) => {
     if (!selected) return;
     const nextIndex = (selectedIndex + direction + products.length) % products.length;
@@ -32,9 +33,9 @@ export default function ProductArchive() {
         <motion.div
           className="mb-16 grid gap-8 md:grid-cols-[0.75fr_1.25fr]"
           initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+          transition={{ duration: 1.15, ease: "easeInOut" }}
           viewport={{ once: true, amount: 0.35 }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.15, ease: "easeInOut" }}
         >
           <div>
             <p className="mb-5 text-xs uppercase tracking-[0.34em] text-ash/60">
@@ -45,7 +46,7 @@ export default function ProductArchive() {
             </h2>
           </div>
           <p className="max-w-2xl self-end text-base font-light leading-8 text-ash md:text-lg">
-            当行为被理解，产品才显现为证据。点击一件设计，进入它的展签；再切换到下一件，看“无意识设计”如何在不同物中出现。
+            当行为被理解，产品才显现为证据。这里集中整理五件代表作品的年份、品牌、动作、理念与设计特点；点击一件设计，进入更完整的展签。
           </p>
         </motion.div>
 
@@ -82,7 +83,7 @@ export default function ProductArchive() {
           onNext={() => move(1)}
           onPrev={() => move(-1)}
           product={selected}
-          source={sourceMap[selected.id]}
+          source={sourceMap[selected.sourceId]}
         />
       )}
     </section>
