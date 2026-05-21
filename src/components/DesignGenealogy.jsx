@@ -8,55 +8,55 @@ const asset = (path) => `${BASE}${path.replace(/^\/+/, "")}`;
 const people = [
   {
     id: "soetsu",
-    side: "left-[18%] top-[22%]",
+    position: { left: "18%", top: "18%" },
     name: "柳宗悦",
     en: "Soetsu Yanagi",
     image: "research/people/soetsu-yanagi.jpg",
-    avatarPosition: { x: "50%", y: "28%" },
+    avatarPosition: { x: "50%", y: "24%" },
     role: "民艺思想提出者",
     keywords: "民艺 / 普通器物 / 日常之美 / 无名之美",
     text: "柳宗悦强调普通民间器物中的自然美，关注不被个人作者意识过度装饰的日常之物。"
   },
   {
     id: "sori",
-    side: "left-[22%] top-[48%]",
+    position: { left: "18%", top: "45%" },
     name: "柳宗理",
     en: "Sori Yanagi",
     image: "research/people/sori-yanagi.jpg",
-    avatarPosition: { x: "50%", y: "22%" },
+    avatarPosition: { x: "50%", y: "20%" },
     role: "日本现代工业设计代表人物",
     keywords: "工业设计 / 手感 / 功能 / 朴素 / 生活器物",
     text: "柳宗理将民艺精神与现代工业生产结合，让工业产品保留人的触感、功能和日常温度。"
   },
   {
     id: "hara",
-    side: "left-[18%] top-[74%]",
+    position: { left: "18%", top: "72%" },
     name: "原研哉",
     en: "Kenya Hara",
     image: "research/people/kenya-hara.jpg",
-    avatarPosition: { x: "50%", y: "24%" },
+    avatarPosition: { x: "50%", y: "22%" },
     role: "信息设计师，MUJI 设计思想代表人物之一",
     keywords: "空 / 白 / 信息 / 感性 / 这样就好",
     text: "原研哉强调空、白和感知经验，使信息和品牌不依赖强烈视觉刺激，而是通过留白唤起感受。"
   },
   {
     id: "ideo",
-    side: "right-[7%] top-[27%]",
+    position: { left: "78%", top: "24%" },
     name: "IDEO",
     en: "DESIGN METHOD",
     image: "research/people/ideo-logo.svg",
-    avatarPosition: { x: "50%", y: "50%" },
     role: "西方用户观察与设计研究方法",
     keywords: "用户观察 / 行为研究 / 隐性需求 / 原型",
-    text: "IDEO 的设计环境影响了深泽直人对行为、隐性需求和问题定义的分析方式。"
+    text: "IDEO 的设计环境影响了深泽直人对行为、隐性需求和问题定义的分析方式。",
+    logo: true
   },
   {
     id: "morrison",
-    side: "right-[7%] top-[62%]",
+    position: { left: "78%", top: "58%" },
     name: "Jasper Morrison",
     en: "British Industrial Designer",
     image: "research/people/jasper-morrison.jpg",
-    avatarPosition: { x: "50%", y: "22%" },
+    avatarPosition: { x: "50%", y: "20%" },
     role: "Super Normal 共同提出者",
     keywords: "Super Normal / ordinary objects / everyday use / no ego",
     text: "Jasper Morrison 与深泽直人共同提出 Super Normal，强调普通物品在长期使用中的价值，而不是设计师自我风格的炫耀。"
@@ -64,46 +64,72 @@ const people = [
 ];
 
 const centerPerson = {
+  id: "fukasawa",
+  name: "深泽直人",
+  en: "Naoto Fukasawa",
   image: "research/people/naoto-fukasawa.jpg",
-  avatarPosition: { x: "50%", y: "24%" }
+  avatarPosition: { x: "50%", y: "22%" },
+  role: "中心关系",
+  keywords: "Without Thought / 身体记忆 / 人—物—环境",
+  text: "深泽直人进一步将日常器物中的自然性转化为对无意识行为的观察，让产品在使用中自然显现价值。"
 };
 
-function Portrait({ active = false, label = "", src = "", variant = "node", avatarPosition }) {
+function Avatar({ active = false, person, variant = "node" }) {
   const [failed, setFailed] = useState(false);
-  const imageSrc = src ? asset(src) : "";
-  const sizeClass =
-    variant === "center" ? "h-[156px] w-[156px]" : variant === "panel" ? "h-[72px] w-[72px]" : "h-32 w-32";
-  const labelClass = variant === "panel" ? "text-[9px]" : "text-[10px]";
+  const sizeClass = variant === "center" ? "h-24 w-24" : variant === "detail" ? "h-[72px] w-[72px]" : "h-[104px] w-[104px]";
+
+  if (person.logo) {
+    return (
+      <div className={`${sizeClass} flex shrink-0 items-center justify-center overflow-hidden rounded-full border border-[rgba(120,105,85,0.22)] bg-[rgba(244,239,228,0.5)]`}>
+        <img
+          alt="IDEO logo"
+          className="h-full w-full object-contain p-4 opacity-[0.72] grayscale contrast-[1.05] brightness-[1.04] mix-blend-multiply transition-all duration-700 hover:opacity-90"
+          src={asset(person.image)}
+        />
+      </div>
+    );
+  }
 
   return (
-    <div className={`relative ${sizeClass} overflow-hidden rounded-full border ${active ? "border-wood/70" : "border-[rgba(120,105,85,0.22)]"} bg-[rgba(244,239,228,0.5)]`}>
-      {imageSrc && !failed ? (
+    <div className={`${sizeClass} shrink-0 overflow-hidden rounded-full border ${active ? "border-wood/60" : "border-[rgba(120,105,85,0.22)]"} bg-[rgba(244,239,228,0.5)]`}>
+      {!failed ? (
         <img
-          alt=""
-          className="h-full w-full object-cover opacity-[0.72] grayscale contrast-[1.05] brightness-[1.05] mix-blend-multiply transition-all duration-700 hover:opacity-90 hover:contrast-[1.12] hover:brightness-100"
+          alt={`${person.en} portrait`}
+          className="h-full w-full object-cover opacity-[0.76] grayscale contrast-[1.08] brightness-[1.04] mix-blend-multiply transition-all duration-700 hover:opacity-90 hover:contrast-[1.12] hover:brightness-100"
           onError={() => setFailed(true)}
-          src={imageSrc}
+          src={asset(person.image)}
           style={{
-            objectPosition: `${avatarPosition?.x || "50%"} ${avatarPosition?.y || "28%"}`
+            objectPosition: `${person.avatarPosition?.x || "50%"} ${person.avatarPosition?.y || "25%"}`
           }}
         />
       ) : (
-        <svg className="h-full w-full opacity-[0.72] grayscale" viewBox="0 0 80 80">
-          <circle cx="40" cy="28" r="13" fill="#C9C4B8" opacity="0.9" />
-          <path d="M18 72 C22 50 58 50 62 72" fill="#B7926A" opacity="0.38" />
-          <path d="M24 22 C30 10 52 10 58 24" fill="none" stroke="#77736A" strokeWidth="1" opacity="0.45" />
-        </svg>
+        <div className="flex h-full w-full items-center justify-center text-sm uppercase tracking-[0.18em] text-ash/65">
+          {person.id === "fukasawa" ? "NF" : person.en.slice(0, 2)}
+        </div>
       )}
-      <span className={`absolute bottom-2 left-1/2 -translate-x-1/2 ${labelClass} uppercase tracking-[0.12em] text-ash/75`}>
-        {label}
-      </span>
     </div>
+  );
+}
+
+function DetailPanel({ person }) {
+  return (
+    <motion.div
+      animate={{ opacity: 1, y: 0 }}
+      className="genealogy-detail z-[4] border border-[rgba(120,105,85,0.14)] bg-rice/65 px-6 py-5 backdrop-blur-[5px] md:absolute md:bottom-[4%] md:right-[4%] md:w-[420px]"
+      initial={{ opacity: 0, y: 10 }}
+      key={person.id}
+      transition={{ duration: 0.55, ease: "easeInOut" }}
+    >
+      <p className="text-xs uppercase tracking-[0.2em] text-ash/55">{person.role}</p>
+      <p className="mt-3 text-sm leading-7 text-ash">{person.text}</p>
+      <p className="mt-4 text-xs leading-6 tracking-[0.16em] text-ash/55">{person.keywords}</p>
+    </motion.div>
   );
 }
 
 export default function DesignGenealogy() {
   const [active, setActive] = useState("fukasawa");
-  const activePerson = people.find((person) => person.id === active);
+  const activePerson = people.find((person) => person.id === active) || centerPerson;
 
   return (
     <Section id="design-genealogy">
@@ -124,85 +150,72 @@ export default function DesignGenealogy() {
           </p>
         </motion.div>
 
-        <div className="relative min-h-[840px] border-y border-line/45">
-          <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1100 760" preserveAspectRatio="none">
-            <path d="M276 172 C392 208 456 262 532 346" fill="none" stroke="#C9C4B8" strokeWidth="0.65" opacity="0.58" />
-            <path d="M310 364 C420 372 474 360 532 346" fill="none" stroke="#C9C4B8" strokeWidth="0.65" opacity="0.58" />
-            <path d="M282 562 C404 500 476 414 532 346" fill="none" stroke="#C9C4B8" strokeWidth="0.65" opacity="0.58" />
-            <path d="M826 210 C728 258 646 306 574 346" fill="none" stroke="#C9C4B8" strokeWidth="0.65" opacity="0.58" />
-            <path d="M826 474 C730 430 646 384 574 346" fill="none" stroke="#C9C4B8" strokeWidth="0.65" opacity="0.58" />
+        <div className="genealogy-map relative mx-auto hidden h-[720px] w-[min(1180px,86vw)] border-y border-line/45 md:block">
+          <svg className="genealogy-lines absolute inset-0 z-[1] h-full w-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M27 18 C36 24 42 33 39 41" fill="none" stroke="rgba(120,105,85,0.18)" strokeWidth="0.28" />
+            <path d="M29 45 C36 45 41 45 38 48" fill="none" stroke="rgba(120,105,85,0.18)" strokeWidth="0.28" />
+            <path d="M27 72 C37 65 43 56 39 52" fill="none" stroke="rgba(120,105,85,0.18)" strokeWidth="0.28" />
+            <path d="M69 24 C62 29 58 37 61 42" fill="none" stroke="rgba(120,105,85,0.18)" strokeWidth="0.28" />
+            <path d="M69 58 C62 55 58 51 61 48" fill="none" stroke="rgba(120,105,85,0.18)" strokeWidth="0.28" />
           </svg>
 
           <button
-            className="absolute left-1/2 top-[52%] w-80 -translate-x-1/2 -translate-y-1/2 rounded-full border border-wood/45 bg-rice/65 px-8 py-8 text-center backdrop-blur-sm"
+            className="genealogy-center absolute left-1/2 top-[48%] z-[3] flex h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-2 rounded-full border border-wood/45 bg-rice/65 px-8 text-center backdrop-blur-sm"
             onFocus={() => setActive("fukasawa")}
             onMouseEnter={() => setActive("fukasawa")}
             type="button"
           >
-            <div className="mx-auto mb-4 flex justify-center">
-              <Portrait active avatarPosition={centerPerson.avatarPosition} label="NF" src={centerPerson.image} variant="center" />
-            </div>
-            <p className="text-3xl font-light text-ink">深泽直人</p>
-            <p className="mt-2 text-xs uppercase tracking-[0.18em] text-ash/60">Naoto Fukasawa</p>
-            <p className="mt-5 text-sm leading-7 text-ash">Without Thought / 身体记忆 / 人—物—环境</p>
+            <Avatar active={active === "fukasawa"} person={centerPerson} variant="center" />
+            <p className="mt-2 text-3xl font-light text-ink">深泽直人</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-ash/50">Naoto Fukasawa</p>
+            <p className="mt-2 text-sm leading-6 text-ash/75">Without Thought / 身体记忆 / 人—物—环境</p>
           </button>
 
-          {people.map((person) => (
+          {people.map((person) => {
+            const isActive = active === person.id;
+            const isDimmed = active !== "fukasawa" && !isActive;
+            return (
+              <motion.button
+                animate={{ opacity: isActive ? 1 : isDimmed ? 0.32 : 0.72 }}
+                className="genealogy-node absolute z-[3] w-[220px] -translate-x-1/2 -translate-y-1/2 text-center"
+                key={person.id}
+                onFocus={() => setActive(person.id)}
+                onMouseEnter={() => setActive(person.id)}
+                style={person.position}
+                type="button"
+              >
+                <div className="genealogy-node-content flex flex-col items-center gap-2">
+                  <Avatar active={isActive} person={person} />
+                  <p className="node-name whitespace-nowrap text-2xl font-light text-ink/80">{person.name}</p>
+                  <p className="text-xs uppercase tracking-[0.18em] text-ash/45">{person.en}</p>
+                  <p className="node-keywords mx-auto max-w-[220px] text-sm leading-[1.8] text-ash/60">{person.keywords}</p>
+                </div>
+              </motion.button>
+            );
+          })}
+
+          <DetailPanel person={activePerson} />
+        </div>
+
+        <div className="space-y-8 md:hidden">
+          {[centerPerson, ...people].map((person) => (
             <button
-              className={`genealogy-node absolute max-w-[285px] -translate-x-1/2 -translate-y-1/2 text-left ${person.side}`}
+              className="w-full border-y border-line/45 bg-rice/30 px-5 py-6 text-left"
               key={person.id}
-              onFocus={() => setActive(person.id)}
-              onMouseEnter={() => setActive(person.id)}
+              onClick={() => setActive(person.id)}
               type="button"
             >
-              <motion.div animate={{ opacity: active === person.id ? 1 : 0.56 }} className="mb-4">
-                <Portrait
-                  active={active === person.id}
-                  avatarPosition={person.avatarPosition}
-                  label={person.id === "ideo" ? "IDEO" : person.en.slice(0, 2)}
-                  src={person.image}
-                />
-              </motion.div>
-              <motion.p animate={{ opacity: active === person.id ? 1 : 0.78 }} className="text-[28px] font-light text-ink">
-                {person.name}
-              </motion.p>
-              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-ash/45">{person.en}</p>
-              <p className="mt-4 text-sm leading-7 text-ash/75">{person.keywords}</p>
+              <div className="flex items-center gap-5">
+                <Avatar active={active === person.id} person={person} />
+                <div>
+                  <p className="text-2xl font-light text-ink">{person.name}</p>
+                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-ash/50">{person.en}</p>
+                  <p className="mt-3 text-sm leading-7 text-ash/70">{person.keywords}</p>
+                </div>
+              </div>
             </button>
           ))}
-
-          <motion.div
-            className="absolute bottom-[3%] left-1/2 flex w-[min(720px,52vw)] -translate-x-1/2 gap-5 border border-[rgba(120,105,85,0.14)] bg-rice/60 px-7 py-5 backdrop-blur-[4px]"
-            key={active}
-            animate={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 12 }}
-            transition={{ duration: 0.55, ease: "easeInOut" }}
-          >
-            <div className="shrink-0">
-              <Portrait
-                active
-                label={activePerson ? (activePerson.id === "ideo" ? "IDEO" : activePerson.en.slice(0, 2)) : "NF"}
-                src={activePerson ? activePerson.image : centerPerson.image}
-                avatarPosition={activePerson ? activePerson.avatarPosition : centerPerson.avatarPosition}
-                variant="panel"
-              />
-            </div>
-            <div>
-              {activePerson ? (
-                <>
-                  <p className="text-xs uppercase tracking-[0.2em] text-ash/55">{activePerson.role}</p>
-                  <p className="mt-3 text-sm leading-7 text-ash">{activePerson.text}</p>
-                </>
-              ) : (
-                <>
-                  <p className="text-xs uppercase tracking-[0.2em] text-ash/55">中心关系</p>
-                  <p className="mt-3 text-sm leading-7 text-ash">
-                    深泽直人进一步将日常器物中的自然性转化为对无意识行为的观察，让产品在使用中自然显现价值。
-                  </p>
-                </>
-              )}
-            </div>
-          </motion.div>
+          <DetailPanel person={activePerson} />
         </div>
       </div>
     </Section>
