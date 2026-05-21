@@ -25,13 +25,18 @@
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Design_Thinking-Prozess.png"
   },
   {
-    "file": "research/people/naoto-fukasawa.svg",
-    "source": "Local fallback illustration",
-    "sourceUrl": ""
+    "file": "research/people/naoto-fukasawa.jpg",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Naoto_Fukasawa.jpg"
   },
   {
-    "file": "research/people/jasper-morrison.svg",
-    "source": "Local fallback illustration",
+    "file": "research/people/jasper-morrison.jpg",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jasper_Morrison.jpg"
+  },
+  {
+    "file": "research/people/ideo-method.svg",
+    "source": "Local method icon",
     "sourceUrl": ""
   },
   {

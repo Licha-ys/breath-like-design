@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <rect width="240" height="240" fill="#F6F3EC"/>
+  <path d="M48 62h58v42H48zM134 52h62v42h-62zM82 144h78v44H82z" fill="none" stroke="#C9C4B8" stroke-width="3"/>
+  <path d="M106 82c18 0 18-9 28-9M77 104c10 22 14 34 24 40M160 94c0 22-4 34-14 50" fill="none" stroke="#B7926A" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="77" cy="83" r="8" fill="#DDE4E2"/>
+  <circle cx="166" cy="73" r="8" fill="#E9D8B8"/>
+  <circle cx="121" cy="166" r="8" fill="#9D6B5C" opacity="0.42"/>
+  <text x="120" y="222" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#77736A" opacity="0.8">IDEO METHOD</text>
+</svg>
