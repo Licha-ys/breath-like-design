@@ -146,6 +146,11 @@ function InteractionSection({ section }) {
           <p className="mb-5 text-xs uppercase tracking-[0.34em] text-ash/60">{section.label}</p>
           <h2 className="text-6xl font-extralight text-ink md:text-8xl">{product.action}</h2>
           <p className="mt-8 text-sm tracking-[0.22em] text-ash/65">{revealed ? "理念已显现" : section.hint}</p>
+          <div className="mt-8 inline-flex flex-col border-l border-line/65 pl-4">
+            <span className="text-[11px] uppercase tracking-[0.22em] text-ash/55">理念发展标签</span>
+            <span className="mt-2 text-sm font-light text-wood">{product.developmentStage}</span>
+            <span className="mt-2 max-w-md text-sm font-light leading-7 text-ash">{product.developmentLine}</span>
+          </div>
           <motion.div animate={{ opacity: revealed ? 1 : 0, y: revealed ? 0 : 18, filter: revealed ? "blur(0px)" : "blur(8px)" }} transition={{ duration: 0.75, ease: "easeOut" }}>
             <p className="mt-12 max-w-xl border-l border-line/70 pl-6 text-2xl font-light leading-10 text-ink/85">{product.shortLine}</p>
             <p className="mt-6 max-w-xl text-base font-light leading-8 text-ash">{product.description}</p>

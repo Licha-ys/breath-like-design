@@ -54,14 +54,14 @@ export default function RelationshipSection() {
             </h2>
           </div>
           <p className="max-w-3xl self-end text-base font-light leading-8 text-ash md:text-lg">
-            深泽直人的设计不是孤立的产品，而是隐藏在人、物、行为与环境之间的关系。无意识设计让身体先于意识行动，东方调和让物退到生活背后。“像呼吸一样”不是一个视觉风格，而是一种关系状态。
+            在这里，产品不再被理解为孤立的物，而被拆解为一组关系：身体如何行动，产品如何回应，经验如何形成，空间如何被改变，理念如何从中显现。
           </p>
         </motion.div>
 
         <div className="relative border-y border-line/45 py-14">
           <svg className="pointer-events-none absolute left-0 top-[6.5rem] h-24 w-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <motion.path
-              animate={{ opacity: [0.2, 0.48, 0.2] }}
+              animate={{ opacity: [0.24, 0.55, 0.24] }}
               d="M28 62 C150 22 250 98 370 61 C495 24 614 96 738 60 C880 18 1010 40 1174 62"
               fill="none"
               stroke="#C9C4B8"
@@ -74,7 +74,7 @@ export default function RelationshipSection() {
           <div className="grid gap-5 lg:grid-cols-5">
             {relations.map((item, index) => (
               <motion.button
-                animate={{ opacity: active === index ? 1 : 0.48, y: 0 }}
+                animate={{ opacity: active === index ? 1 : 0.5, y: 0 }}
                 className="group relative min-h-[390px] cursor-pointer bg-rice/20 p-5 text-left transition-colors duration-700 hover:bg-rice/35"
                 initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
                 key={item.action}
@@ -84,7 +84,7 @@ export default function RelationshipSection() {
                 transition={{ delay: index * 0.08, duration: 0.85, ease: "easeInOut" }}
                 type="button"
                 viewport={{ once: true, amount: 0.35 }}
-                whileInView={{ opacity: active === index ? 1 : 0.58, y: 0, filter: "blur(0px)" }}
+                whileInView={{ opacity: active === index ? 1 : 0.62, y: 0, filter: "blur(0px)" }}
               >
                 <span className="mb-8 block h-2.5 w-2.5 rounded-full border border-wood/60 bg-rice" />
                 <p className="text-3xl font-light text-ink">{item.action}</p>

@@ -2,7 +2,15 @@ import React from "react";
 import { motion } from "framer-motion";
 import Section from "./Section.jsx";
 
-const keywords = ["留白", "间", "侘寂", "民艺", "谦逊", "自然", "调和"];
+const keywords = [
+  ["留白", "让信息获得呼吸的距离"],
+  ["间", "人与物之间恰到好处的停顿"],
+  ["侘寂", "接受朴素、时间感与不完美"],
+  ["民艺", "普通器物中的日常温度"],
+  ["谦逊", "物不抢夺人的注意"],
+  ["自然", "不刻意、不突兀地进入生活"],
+  ["调和", "人、行为、物、环境彼此适应"]
+];
 
 export default function EasternHarmony() {
   return (
@@ -21,13 +29,20 @@ export default function EasternHarmony() {
             东方的调和
           </h2>
           <p className="mt-10 max-w-2xl text-base font-light leading-9 text-ash md:text-lg">
-            深泽直人的设计并不依赖表面的东方符号，而是通过克制、留白、谦逊和自然性接近东方审美。禅意不是装饰，而是人、物与环境之间不被打扰的关系。
+            深泽直人的设计并不借用表面的东方符号，而是让物退到生活背后。
           </p>
-          <div className="mt-10 flex max-w-xl flex-wrap gap-3">
-            {keywords.map((word) => (
-              <span className="border-b border-line/70 pb-1 text-sm text-ash" key={word}>
-                {word}
-              </span>
+          <p className="mt-6 max-w-2xl text-base font-light leading-9 text-ash md:text-lg">
+            东方禅意在这里不是装饰风格，而是一种关系状态：人不被物打扰，物不从环境中跳出，空间也不被信息填满。
+          </p>
+          <p className="mt-6 max-w-2xl text-base font-light leading-9 text-ash md:text-lg">
+            当设计足够克制，它就不再需要被看见，而是像呼吸一样，让人、物与环境自然调和。
+          </p>
+          <div className="mt-10 grid max-w-2xl gap-3 sm:grid-cols-2">
+            {keywords.map(([word, text]) => (
+              <div className="border-t border-line/55 pt-3" key={word}>
+                <p className="text-sm text-ink/80">{word}</p>
+                <p className="mt-2 text-xs leading-6 text-ash">{text}</p>
+              </div>
             ))}
           </div>
         </motion.div>
@@ -87,7 +102,7 @@ export default function EasternHarmony() {
             />
           </svg>
           <div className="absolute bottom-8 left-8 text-xs leading-6 tracking-[0.22em] text-ash/55">
-            人 / 物 / 环境
+            人 / 行为 / 物 / 环境
           </div>
         </motion.div>
       </div>

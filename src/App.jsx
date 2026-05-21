@@ -2,25 +2,32 @@ import React from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import BreathLine from "./components/BreathLine.jsx";
 import Section from "./components/Section.jsx";
-import DesignerProfile from "./components/DesignerProfile.jsx";
+import ContextSection from "./components/ContextSection.jsx";
+import DesignGenealogy from "./components/DesignGenealogy.jsx";
+import EastWestSection from "./components/EastWestSection.jsx";
 import BehaviorLab from "./components/BehaviorLab.jsx";
 import ProductInteractionSections from "./components/ProductInteractionSections.jsx";
 import RelationshipSection from "./components/RelationshipSection.jsx";
 import TimelineSection from "./components/TimelineSection.jsx";
-import ConceptDictionary from "./components/ConceptDictionary.jsx";
+import ResearchClues from "./components/ResearchClues.jsx";
 import EasternHarmony from "./components/EasternHarmony.jsx";
 import ProductArchive from "./components/ProductArchive.jsx";
+import ReferencesSection from "./components/ReferencesSection.jsx";
 
 const navItems = [
   { id: "home", title: "像呼吸一样" },
-  { id: "designer-profile", title: "设计师档案" },
+  { id: "context", title: "时代背景" },
+  { id: "design-genealogy", title: "东方工业设计谱系" },
+  { id: "east-west", title: "东西方之间" },
   { id: "behavior-lab", title: "无意识行为实验室" },
-  { id: "product-interactions", title: "单独产品交互页" },
-  { id: "timeline", title: "时间中的日常" },
-  { id: "concept-dictionary", title: "概念词典" },
+  { id: "product-interactions", title: "产品行为交互页" },
+  { id: "relationship-section", title: "关系剖面" },
+  { id: "timeline", title: "理念与产品发展" },
+  { id: "research-clues", title: "研究线索" },
   { id: "eastern-harmony", title: "东方的调和" },
   { id: "product-archive", title: "真实产品档案室" },
-  { id: "ending", title: "当设计消失，生活继续" }
+  { id: "references", title: "参考文献" },
+  { id: "ending", title: "结尾" }
 ];
 
 const fadeUp = {
@@ -91,10 +98,10 @@ export default function App() {
               像呼吸一样
             </h1>
             <p className="mt-8 max-w-lg text-xl font-light leading-9 text-ash">
-              深泽直人的无意识设计与东方调和
+              深泽直人、无意识设计与东方禅意的调和
             </p>
             <p className="mt-12 max-w-md text-base font-light leading-8 text-ash/90">
-              好的设计不需要被注意。它像空气、光、水和呼吸一样，自然地进入日常。
+              好的设计为什么可以像呼吸一样自然？它不是视觉风格，而是一种人、行为、物、环境之间自然发生的关系。
             </p>
             <p className="mt-8 max-w-md border-l border-line/70 pl-5 text-lg font-light leading-8 text-ink/80">
               在理解之前，身体已经知道如何行动。
@@ -132,14 +139,17 @@ export default function App() {
         <BodyCue />
       </Section>
 
-      <DesignerProfile />
+      <ContextSection />
+      <DesignGenealogy />
+      <EastWestSection />
       <BehaviorLab />
       <ProductInteractionSections />
       <RelationshipSection />
       <TimelineSection />
-      <ConceptDictionary />
+      <ResearchClues />
       <EasternHarmony />
       <ProductArchive />
+      <ReferencesSection />
 
       <Section id="ending" className="pb-28">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
@@ -157,7 +167,7 @@ export default function App() {
               当设计消失，生活继续
             </h2>
             <p className="mt-10 text-lg font-light leading-9 text-ash">
-              当设计足够自然，它就不再需要被解释。它像呼吸一样，存在，却不打扰。
+              像呼吸一样，不是视觉风格，而是人、行为、物、环境之间自然发生的关系。
             </p>
             <p className="mt-14 text-2xl font-light leading-10 text-ink/80">
               好的设计不要求被注意，它只是安静地让生活继续。

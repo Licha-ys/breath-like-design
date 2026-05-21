@@ -206,6 +206,9 @@ export default function BehaviorLab() {
           <p className="mt-8 text-base font-light leading-8 text-[#6F6A61] md:text-lg">
             在产品出现之前，先让身体进入动作。拉、靠近、按、坐下、点亮，都是无需学习的日常经验。
           </p>
+          <p className="mt-5 text-base font-light leading-8 text-[#6F6A61] md:text-lg">
+            这些动作来自日常中的隐性经验。身体先于意识，行为先于解释。
+          </p>
         </motion.div>
 
         <div className="grid gap-4 md:grid-cols-5">
