@@ -110,6 +110,22 @@ function Visual({ type, image }) {
   return <ProductCollage />;
 }
 
+function FukasawaPortrait() {
+  return (
+    <div className="mt-8 flex items-center gap-5">
+      <div className="h-32 w-32 shrink-0 overflow-hidden rounded-full border border-[rgba(120,105,85,0.22)] bg-[rgba(244,239,228,0.5)] md:h-36 md:w-36">
+        <img
+          alt="Naoto Fukasawa portrait"
+          className="block h-full w-full object-cover opacity-[0.72] grayscale contrast-[1.05] brightness-[1.04] mix-blend-multiply"
+          src={asset("research/people/naoto-fukasawa.jpg")}
+          style={{ objectPosition: "50% 22%" }}
+        />
+      </div>
+      <div className="hidden h-px flex-1 bg-line/45 sm:block" />
+    </div>
+  );
+}
+
 export default function ContextSection() {
   const [active, setActive] = useState(0);
 
@@ -126,6 +142,7 @@ export default function ContextSection() {
           <h2 className="text-4xl font-light leading-tight text-ink md:text-6xl">
             时代中的深泽直人
           </h2>
+          <FukasawaPortrait />
           <p className="mt-10 max-w-2xl text-base font-light leading-9 text-ash md:text-lg">
             深泽直人的设计理念形成于多重背景的交汇处：日本现代工业设计的日常器物传统、西方用户观察方法，以及 MUJI、±0、maruni、HAY 等生活方式品牌的实践语境。
           </p>
