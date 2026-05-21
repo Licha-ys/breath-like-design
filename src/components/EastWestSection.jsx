@@ -10,22 +10,22 @@ const panels = {
     label: "Western Method",
     title: "西方方法",
     image: "research/east-west/eastwest-western-method.png",
-    keywords: ["功能逻辑", "系统", "效率", "用户研究", "问题定义", "显性需求", "技术理性"],
-    text: "西方现代设计更强调功能、结构、效率和可验证的方法。它帮助设计师拆解问题、观察用户、建立系统。"
+    keywords: ["观察", "分析", "原型", "系统", "显性问题"],
+    text: "西方方法提供了研究人的工具：观察用户如何行动，分析问题如何产生，并用原型验证解决方式。"
   },
   center: {
     label: "Naoto Fukasawa",
     title: "深泽直人",
     image: "research/east-west/eastwest-fukasawa.svg",
     keywords: ["Observation × Harmony", "Behavior × Emptiness", "Function × Atmosphere", "Product × Environment"],
-    text: "深泽直人将二者调和：用观察方法发现人的无意识动作，用东方的留白与克制让物自然进入环境。"
+    text: "深泽直人不是把东西方风格拼贴在一起，而是把两种方法转化为一种设计状态：用观察发现动作，用克制减少干扰，让产品像呼吸一样进入生活。"
   },
   east: {
     label: "Eastern Relation",
     title: "东方关系",
     image: "research/east-west/eastwest-eastern-relation.svg",
-    keywords: ["留白", "克制", "日常", "物我合一", "身体感受", "低存在感", "环境调和"],
-    text: "东方设计更强调人与物、物与环境之间的关系。它不急于突出设计，而是让物安静地融入生活。"
+    keywords: ["留白", "克制", "日常", "身体感", "环境调和"],
+    text: "东方关系不急于突出设计，而是让物退到生活背后，使人、物与空间保持不被打扰的平衡。"
   }
 };
 
@@ -112,7 +112,7 @@ export default function EastWestSection() {
           <p className="mb-5 text-xs uppercase tracking-[0.34em] text-ash/60">East × West</p>
           <h2 className="text-4xl font-light leading-tight text-ink md:text-6xl">东西方之间</h2>
           <p className="mt-8 text-base font-light leading-8 text-ash md:text-lg">
-            深泽直人的特殊性不在于单纯属于东方或西方，而在于他站在两者之间。他用西方设计方法观察用户行为，又用东方审美处理人、物与环境的关系。
+            深泽直人的特殊性不在于他单纯属于东方或西方，而在于他站在两者之间。西方设计方法让他学会观察行为、定义问题和分析隐性需求；东方审美则让他以留白、克制和低存在感处理人、物与环境之间的关系。
           </p>
         </motion.div>
 

@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 import Section from "./Section.jsx";
 
 const clues = [
-  ["回归本质", "从欲望加法转向设计减法。"],
-  ["有与无", "留白不是空缺，而是关系得以呼吸的空间。"],
-  ["隐性需求", "人在不思考状态下的动作，往往暴露真实需求。"],
-  ["情感关怀", "好的设计不只解决功能，也回应人的记忆和感受。"],
-  ["认知负荷", "符合直觉的交互可以减少学习成本。"],
-  ["行为消融", "产品不再是视觉中心，而是进入行为和环境。"]
+  ["回归本质", "他的设计不是增加装饰，而是减少干扰，让物回到真实使用。"],
+  ["有与无", "留白让产品不必占满注意力，使用关系反而更清晰。"],
+  ["隐性需求", "人的真实需求常常藏在不经意的动作中。"],
+  ["情感关怀", "情感不是额外装饰，而是在顺手、熟悉和安心的使用中产生。"],
+  ["认知负荷", "当设计符合身体记忆，用户就不需要重新学习。"],
+  ["行为消融", "产品不再作为视觉中心，而是融入行为和环境。"]
 ];
 
 export default function ResearchClues() {
@@ -25,7 +25,7 @@ export default function ResearchClues() {
           <p className="mb-5 text-xs uppercase tracking-[0.34em] text-ash/60">Research Clues</p>
           <h2 className="text-4xl font-light leading-tight text-ink md:text-6xl">研究线索</h2>
           <p className="mt-8 text-base font-light leading-8 text-ash md:text-lg">
-            这些线索不是完整论文展示，而是从文献中提取出的设计判断，帮助解释为什么本项目强调动作、留白、低刺激和关系。
+            这些线索不是文献摘要，而是帮助理解深泽直人设计的一组判断：为什么他强调日常动作，为什么物要退到生活背后，为什么好的设计可以减少人的思考。
           </p>
         </motion.div>
 

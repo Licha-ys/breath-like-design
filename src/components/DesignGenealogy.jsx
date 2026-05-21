@@ -14,8 +14,8 @@ const people = [
     image: "research/people/soetsu-yanagi.jpg",
     avatarPosition: { x: "50%", y: "24%" },
     role: "民艺思想提出者",
-    keywords: "民艺 / 普通器物 / 日常之美 / 无名之美",
-    text: "柳宗悦强调普通民间器物中的自然美，关注不被个人作者意识过度装饰的日常之物。"
+    keywords: "民艺 / 普通器物 / 无名之美",
+    text: "柳宗悦提出民艺思想，强调普通器物中自然形成的美。这为深泽直人理解“日常物品并不需要强烈作者性”提供了思想前提。"
   },
   {
     id: "sori",
@@ -25,8 +25,8 @@ const people = [
     image: "research/people/sori-yanagi.jpg",
     avatarPosition: { x: "50%", y: "20%" },
     role: "日本现代工业设计代表人物",
-    keywords: "工业设计 / 手感 / 功能 / 朴素 / 生活器物",
-    text: "柳宗理将民艺精神与现代工业生产结合，让工业产品保留人的触感、功能和日常温度。"
+    keywords: "工业设计 / 手感 / 功能 / 生活器物",
+    text: "柳宗理将民艺精神转译到现代工业产品中，让工业制品保留人的使用温度。深泽直人延续了这种日常性，并进一步关注人在不思考时如何使用物。"
   },
   {
     id: "hara",
@@ -37,7 +37,7 @@ const people = [
     avatarPosition: { x: "50%", y: "22%" },
     role: "信息设计师，MUJI 设计思想代表人物之一",
     keywords: "空 / 白 / 信息 / 感性 / 这样就好",
-    text: "原研哉强调空、白和感知经验，使信息和品牌不依赖强烈视觉刺激，而是通过留白唤起感受。"
+    text: "原研哉代表了 MUJI 语境中的“空、白、感性与低刺激”设计观。它与深泽直人的设计共同指向一种不强调视觉炫耀、而强调使用感受的东方现代性。"
   },
   {
     id: "ideo",
@@ -47,7 +47,7 @@ const people = [
     image: "research/people/ideo-logo.svg",
     role: "西方用户观察与设计研究方法",
     keywords: "用户观察 / 行为研究 / 隐性需求 / 原型",
-    text: "IDEO 的设计环境影响了深泽直人对行为、隐性需求和问题定义的分析方式。",
+    text: "IDEO 为深泽直人提供了西方设计方法：观察用户、分析行为、识别隐性需求。深泽直人将这种方法转化为“Without Thought”，让设计从人的无意识动作中产生。",
     logo: true
   },
   {
@@ -59,7 +59,7 @@ const people = [
     avatarPosition: { x: "50%", y: "20%" },
     role: "Super Normal 共同提出者",
     keywords: "Super Normal / ordinary objects / everyday use / no ego",
-    text: "Jasper Morrison 与深泽直人共同提出 Super Normal，强调普通物品在长期使用中的价值，而不是设计师自我风格的炫耀。"
+    text: "Jasper Morrison 与深泽直人共同提出 Super Normal，强调普通物品在长期使用中显现出的可靠、自然与亲密。这强化了深泽直人对“低存在感设计”的判断。"
   }
 ];
 
@@ -71,7 +71,7 @@ const centerPerson = {
   avatarPosition: { x: "50%", y: "22%" },
   role: "中心关系",
   keywords: "Without Thought / 身体记忆 / 人—物—环境",
-  text: "深泽直人进一步将日常器物中的自然性转化为对无意识行为的观察，让产品在使用中自然显现价值。"
+  text: "深泽直人位于这些关系的交汇处：他用西方用户观察方法发现无意识行为，又用东方的克制、留白和日常器物观处理人、物与环境的关系。"
 };
 
 function Avatar({ active = false, person, variant = "node" }) {
@@ -165,7 +165,10 @@ export default function DesignGenealogy() {
             东方工业设计的关系谱系
           </h2>
           <p className="mt-8 text-base font-light leading-8 text-ash md:text-lg">
-            深泽直人的无意识设计可以放在东方工业设计的延续中理解。这不是严格的师承关系，而是一条关于“日常器物、人的使用、朴素美学与环境调和”的思想谱系。
+            深泽直人的无意识设计并不是孤立产生的。它可以放在东方工业设计的延续中理解：从民艺对普通器物之美的关注，到柳宗理对工业产品中手感与功能的调和，再到深泽直人对无意识行为、身体记忆与人—物—环境关系的观察。
+          </p>
+          <p className="mt-5 text-base font-light leading-8 text-ash md:text-lg">
+            这不是严格的师承关系，而是一条关于“日常器物、人的使用、朴素美学与环境调和”的思想关系。
           </p>
         </motion.div>
 

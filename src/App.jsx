@@ -12,7 +12,6 @@ import TimelineSection from "./components/TimelineSection.jsx";
 import ResearchClues from "./components/ResearchClues.jsx";
 import EasternHarmony from "./components/EasternHarmony.jsx";
 import ProductArchive from "./components/ProductArchive.jsx";
-import ReferencesSection from "./components/ReferencesSection.jsx";
 
 const navItems = [
   { id: "home", title: "像呼吸一样" },
@@ -26,7 +25,6 @@ const navItems = [
   { id: "research-clues", title: "研究线索" },
   { id: "eastern-harmony", title: "东方的调和" },
   { id: "product-archive", title: "真实产品档案室" },
-  { id: "references", title: "参考文献" },
   { id: "ending", title: "结尾" }
 ];
 
@@ -149,7 +147,6 @@ export default function App() {
       <ResearchClues />
       <EasternHarmony />
       <ProductArchive />
-      <ReferencesSection />
 
       <Section id="ending" className="pb-28">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
@@ -171,6 +168,9 @@ export default function App() {
             </p>
             <p className="mt-14 text-2xl font-light leading-10 text-ink/80">
               好的设计不要求被注意，它只是安静地让生活继续。
+            </p>
+            <p className="mt-12 text-xs uppercase tracking-[0.22em] text-ash/45">
+              Research sources are translated into the narrative above.
             </p>
           </motion.div>
         </div>

@@ -8,24 +8,33 @@ const asset = (path) => `${BASE}${path.replace(/^\/+/, "")}`;
 const layers = [
   {
     title: "日本现代工业设计",
-    keywords: "战后工业化 / 日常器物 / 生活美学 / 朴素实用",
-    text: "日本现代设计在工业生产与日常生活之间寻找平衡，强调物品既要可被生产，也要保留人的使用温度。",
+    keywords: "工业生产 / 日常器物 / 生活美学 / 使用温度",
+    text: "日本现代工业设计在工业生产与日常生活之间寻找平衡。深泽直人的产品延续了这种方向，但他不只关注器物形式，而是进一步关注人在使用中的无意识动作。",
     visual: "objects",
     image: "research/context/context-japan-industrial.svg"
   },
   {
     title: "西方设计方法",
-    keywords: "IDEO / 用户观察 / 行为研究 / 问题定义",
-    text: "西方设计方法为深泽直人提供了观察用户、分析行为和定义问题的工具。",
+    keywords: "IDEO / 用户观察 / 行为研究 / 隐性需求",
+    text: "深泽直人在 IDEO 体系中接触用户观察和行为研究，这让他能够从人的动作中发现设计线索。后来他将这种方法转化为 Without Thought。",
     visual: "method",
     image: "research/context/context-western-method.png"
   },
   {
     title: "生活方式品牌",
     keywords: "MUJI / ±0 / au KDDI / maruni / HAY",
-    text: "这些品牌和产品语境让深泽直人的理念从个人思考转化为具体的生活产品。",
+    text: "这些品牌让深泽直人的理念进入具体生活产品：CD 播放器、加湿器、手机、椅子、灯具。产品不再只是功能物，而成为日常行为和空间氛围的一部分。",
     visual: "collage"
   }
+];
+
+const contextMoments = [
+  ["1980", "多摩美术大学产品设计毕业", "产品设计训练让他从器物、尺度与生产关系出发。"],
+  ["1980s", "Seiko Epson：先进开发设计", "早期企业设计经验让他理解技术产品如何进入日常。"],
+  ["1989", "进入 ID Two / IDEO 体系", "西方用户观察方法开始影响他分析行为的方式。"],
+  ["1996", "建立 IDEO 东京办公室", "他把观察方法带回日本，并转向更克制的生活产品语境。"],
+  ["2003", "成立 Naoto Fukasawa Design", "无意识行为逐渐成为其个人设计实践的核心线索。"],
+  ["2006", "共同提出 Super Normal", "普通物品的长期信任感被明确为设计判断。"]
 ];
 
 function ObjectsSketch() {
@@ -118,10 +127,10 @@ export default function ContextSection() {
             时代中的深泽直人
           </h2>
           <p className="mt-10 max-w-2xl text-base font-light leading-9 text-ash md:text-lg">
-            深泽直人的设计理念并不是孤立产生的。它形成于日本现代工业设计、生活方式品牌、用户研究方法和全球化设计语境的交汇处。
+            深泽直人的设计理念形成于多重背景的交汇处：日本现代工业设计的日常器物传统、西方用户观察方法，以及 MUJI、±0、maruni、HAY 等生活方式品牌的实践语境。
           </p>
           <p className="mt-6 max-w-2xl text-base font-light leading-9 text-ash md:text-lg">
-            20 世纪后期，产品设计不再只是功能与造型的竞争，而逐渐转向人的体验、情感与日常生活方式。他在日本接受产品设计教育，又在美国 IDEO 的设计环境中接触用户观察和行为研究；回到日本后，将这种观察方法转化为更克制、更日常、更接近东方关系美学的设计语言。
+            这些背景共同让他的设计从“造型表达”转向“行为、身体和环境关系”。
           </p>
         </motion.div>
 
@@ -156,6 +165,26 @@ export default function ContextSection() {
                 <Visual image={layer.image} type={layer.visual} />
               </div>
             </motion.button>
+          ))}
+        </div>
+
+        <div className="lg:col-span-2 mt-10 grid gap-px bg-line/30 md:grid-cols-6">
+          {contextMoments.map(([year, title, detail]) => (
+            <motion.div
+              className="group bg-rice/45 p-5 transition-colors duration-700 hover:bg-rice/75"
+              key={year}
+              initial={{ opacity: 0, y: 14 }}
+              transition={{ duration: 0.75, ease: "easeInOut" }}
+              viewport={{ once: true, amount: 0.3 }}
+              whileInView={{ opacity: 0.78, y: 0 }}
+              whileHover={{ opacity: 1 }}
+            >
+              <p className="text-lg font-light text-ink/80">{year}</p>
+              <p className="mt-3 text-xs leading-6 tracking-[0.14em] text-ash/60">{title}</p>
+              <p className="mt-4 text-sm leading-7 text-ash opacity-0 transition-opacity duration-700 group-hover:opacity-100">
+                {detail}
+              </p>
+            </motion.div>
           ))}
         </div>
       </div>
