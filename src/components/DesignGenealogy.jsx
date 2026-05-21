@@ -76,31 +76,50 @@ const centerPerson = {
 
 function Avatar({ active = false, person, variant = "node" }) {
   const [failed, setFailed] = useState(false);
-  const sizeClass = variant === "center" ? "h-24 w-24" : variant === "detail" ? "h-[72px] w-[72px]" : "h-[104px] w-[104px]";
+  const size = variant === "center" ? 118 : variant === "detail" ? 72 : 104;
+  const avatarStyle = {
+    width: `${size}px`,
+    height: `${size}px`,
+    maxWidth: `${size}px`,
+    maxHeight: `${size}px`,
+    borderRadius: "999px",
+    overflow: "hidden",
+    position: "relative",
+    flexShrink: 0,
+    border: `1px solid ${active ? "rgba(183,146,106,0.6)" : "rgba(120,105,85,0.22)"}`,
+    background: "rgba(244,239,228,0.5)"
+  };
 
   if (person.logo) {
     return (
-      <div className={`${sizeClass} flex shrink-0 items-center justify-center overflow-hidden rounded-full border border-[rgba(120,105,85,0.22)] bg-[rgba(244,239,228,0.5)]`}>
-        <img
-          alt="IDEO logo"
-          className="h-full w-full object-contain p-4 opacity-[0.72] grayscale contrast-[1.05] brightness-[1.04] mix-blend-multiply transition-all duration-700 hover:opacity-90"
-          src={asset(person.image)}
-        />
+      <div
+        className="genealogy-logo-node flex items-center justify-center"
+        style={avatarStyle}
+      >
+        <span className="text-[26px] font-light tracking-[0.14em] text-ash/70">
+          IDEO
+        </span>
       </div>
     );
   }
 
   return (
-    <div className={`${sizeClass} shrink-0 overflow-hidden rounded-full border ${active ? "border-wood/60" : "border-[rgba(120,105,85,0.22)]"} bg-[rgba(244,239,228,0.5)]`}>
+    <div className="genealogy-avatar" style={avatarStyle}>
       {!failed ? (
         <img
           alt={`${person.en} portrait`}
-          className="h-full w-full object-cover opacity-[0.76] grayscale contrast-[1.08] brightness-[1.04] mix-blend-multiply transition-all duration-700 hover:opacity-90 hover:contrast-[1.12] hover:brightness-100"
           onError={() => setFailed(true)}
           src={asset(person.image)}
           style={{
+            display: "block",
+            width: "100%",
+            height: "100%",
+            maxWidth: "100%",
+            maxHeight: "100%",
+            objectFit: "cover",
             objectPosition: `${person.avatarPosition?.x || "50%"} ${person.avatarPosition?.y || "25%"}`
           }}
+          className="opacity-[0.76] grayscale contrast-[1.08] brightness-[1.04] mix-blend-multiply transition-all duration-700 hover:opacity-90 hover:contrast-[1.12] hover:brightness-100"
         />
       ) : (
         <div className="flex h-full w-full items-center justify-center text-sm uppercase tracking-[0.18em] text-ash/65">
