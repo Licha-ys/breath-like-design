@@ -30,7 +30,7 @@ const people = [
   },
   {
     id: "hara",
-    position: { left: "18%", top: "72%" },
+    position: { left: "18%", top: "82%" },
     name: "原研哉",
     en: "Kenya Hara",
     image: "research/people/kenya-hara.jpg",
@@ -52,7 +52,7 @@ const people = [
   },
   {
     id: "morrison",
-    position: { left: "78%", top: "58%" },
+    position: { left: "78%", top: "68%" },
     name: "Jasper Morrison",
     en: "British Industrial Designer",
     image: "research/people/jasper-morrison.jpg",
@@ -76,7 +76,7 @@ const centerPerson = {
 
 function Avatar({ active = false, person, variant = "node" }) {
   const [failed, setFailed] = useState(false);
-  const size = variant === "center" ? 118 : variant === "detail" ? 72 : 104;
+  const size = variant === "center" ? 96 : variant === "detail" ? 72 : 104;
   const avatarStyle = {
     width: `${size}px`,
     height: `${size}px`,
@@ -134,7 +134,7 @@ function DetailPanel({ person }) {
   return (
     <motion.div
       animate={{ opacity: 1, y: 0 }}
-      className="genealogy-detail z-[4] border border-[rgba(120,105,85,0.14)] bg-rice/65 px-6 py-5 backdrop-blur-[5px] md:absolute md:bottom-[4%] md:right-[4%] md:w-[420px]"
+      className="genealogy-detail mx-auto mt-10 w-[min(760px,72vw)] border border-[rgba(120,105,85,0.14)] bg-rice/60 px-7 py-5 backdrop-blur-[5px]"
       initial={{ opacity: 0, y: 10 }}
       key={person.id}
       transition={{ duration: 0.55, ease: "easeInOut" }}
@@ -169,17 +169,17 @@ export default function DesignGenealogy() {
           </p>
         </motion.div>
 
-        <div className="genealogy-map relative mx-auto hidden h-[720px] w-[min(1180px,86vw)] border-y border-line/45 md:block">
+        <div className="genealogy-map relative mx-auto mt-20 hidden h-[620px] w-[min(1180px,86vw)] border-y border-line/45 md:block">
           <svg className="genealogy-lines absolute inset-0 z-[1] h-full w-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M27 18 C36 24 42 33 39 41" fill="none" stroke="rgba(120,105,85,0.18)" strokeWidth="0.28" />
-            <path d="M29 45 C36 45 41 45 38 48" fill="none" stroke="rgba(120,105,85,0.18)" strokeWidth="0.28" />
-            <path d="M27 72 C37 65 43 56 39 52" fill="none" stroke="rgba(120,105,85,0.18)" strokeWidth="0.28" />
-            <path d="M69 24 C62 29 58 37 61 42" fill="none" stroke="rgba(120,105,85,0.18)" strokeWidth="0.28" />
-            <path d="M69 58 C62 55 58 51 61 48" fill="none" stroke="rgba(120,105,85,0.18)" strokeWidth="0.28" />
+            <path d="M27 18 C36 23 42 33 39 41" fill="none" stroke="rgba(120,105,85,0.14)" strokeWidth="0.25" />
+            <path d="M28 50 C36 50 41 50 38 50" fill="none" stroke="rgba(120,105,85,0.14)" strokeWidth="0.25" />
+            <path d="M27 82 C37 72 43 59 39 53" fill="none" stroke="rgba(120,105,85,0.14)" strokeWidth="0.25" />
+            <path d="M69 26 C62 31 58 40 61 44" fill="none" stroke="rgba(120,105,85,0.14)" strokeWidth="0.25" />
+            <path d="M69 68 C62 62 58 55 61 52" fill="none" stroke="rgba(120,105,85,0.14)" strokeWidth="0.25" />
           </svg>
 
           <button
-            className="genealogy-center absolute left-1/2 top-[48%] z-[3] flex h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-2 rounded-full border border-wood/45 bg-rice/65 px-8 text-center backdrop-blur-sm"
+            className="genealogy-center absolute left-1/2 top-1/2 z-[3] flex h-[260px] w-[300px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-2 rounded-full border border-wood/45 bg-rice/65 px-8 text-center backdrop-blur-sm"
             onFocus={() => setActive("fukasawa")}
             onMouseEnter={() => setActive("fukasawa")}
             type="button"
@@ -212,8 +212,6 @@ export default function DesignGenealogy() {
               </motion.button>
             );
           })}
-
-          <DetailPanel person={activePerson} />
         </div>
 
         <div className="space-y-8 md:hidden">
@@ -234,8 +232,9 @@ export default function DesignGenealogy() {
               </div>
             </button>
           ))}
-          <DetailPanel person={activePerson} />
         </div>
+
+        <DetailPanel person={activePerson} />
       </div>
     </Section>
   );
