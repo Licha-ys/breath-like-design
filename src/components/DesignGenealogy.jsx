@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Section from "./Section.jsx";
 
+const BASE = import.meta.env.BASE_URL;
+const asset = (path) => `${BASE}${path.replace(/^\/+/, "")}`;
+
 const people = [
   {
     id: "soetsu",
     side: "left-[5%] top-[8%]",
     name: "柳宗悦",
     en: "Soetsu Yanagi",
+    image: "research/people/soetsu-yanagi.jpg",
     role: "民艺思想提出者",
     keywords: "民艺 / 普通器物 / 日常之美 / 无名之美",
     text: "柳宗悦强调普通民间器物中的自然美，关注不被个人作者意识过度装饰的日常之物。"
@@ -17,6 +21,7 @@ const people = [
     side: "left-[12%] top-[40%]",
     name: "柳宗理",
     en: "Sori Yanagi",
+    image: "research/people/sori-yanagi.jpg",
     role: "日本现代工业设计代表人物",
     keywords: "工业设计 / 手感 / 功能 / 朴素 / 生活器物",
     text: "柳宗理将民艺精神与现代工业生产结合，让工业产品保留人的触感、功能和日常温度。"
@@ -26,6 +31,7 @@ const people = [
     side: "left-[4%] bottom-[8%]",
     name: "原研哉",
     en: "Kenya Hara",
+    image: "research/people/kenya-hara.jpg",
     role: "信息设计师，MUJI 设计思想代表人物之一",
     keywords: "空 / 白 / 信息 / 感性 / 这样就好",
     text: "原研哉强调空、白和感知经验，使信息和品牌不依赖强烈视觉刺激，而是通过留白唤起感受。"
@@ -44,20 +50,33 @@ const people = [
     side: "right-[5%] bottom-[14%]",
     name: "Jasper Morrison",
     en: "British Industrial Designer",
+    image: "research/people/jasper-morrison.svg",
     role: "Super Normal 共同提出者",
     keywords: "Super Normal / ordinary objects / everyday use / no ego",
     text: "Jasper Morrison 与深泽直人共同提出 Super Normal，强调普通物品在长期使用中的价值，而不是设计师自我风格的炫耀。"
   }
 ];
 
-function Portrait({ active = false, label = "" }) {
+function Portrait({ active = false, label = "", src = "" }) {
+  const [failed, setFailed] = useState(false);
+  const imageSrc = src ? asset(src) : "";
+
   return (
     <div className={`relative h-16 w-16 overflow-hidden rounded-full border ${active ? "border-wood/70" : "border-line/60"} bg-paper/60`}>
-      <svg className="h-full w-full opacity-75 grayscale" viewBox="0 0 80 80">
-        <circle cx="40" cy="28" r="13" fill="#C9C4B8" opacity="0.9" />
-        <path d="M18 72 C22 50 58 50 62 72" fill="#B7926A" opacity="0.38" />
-        <path d="M24 22 C30 10 52 10 58 24" fill="none" stroke="#77736A" strokeWidth="1" opacity="0.45" />
-      </svg>
+      {imageSrc && !failed ? (
+        <img
+          alt=""
+          className="h-full w-full object-cover opacity-75 grayscale mix-blend-multiply"
+          onError={() => setFailed(true)}
+          src={imageSrc}
+        />
+      ) : (
+        <svg className="h-full w-full opacity-75 grayscale" viewBox="0 0 80 80">
+          <circle cx="40" cy="28" r="13" fill="#C9C4B8" opacity="0.9" />
+          <path d="M18 72 C22 50 58 50 62 72" fill="#B7926A" opacity="0.38" />
+          <path d="M24 22 C30 10 52 10 58 24" fill="none" stroke="#77736A" strokeWidth="1" opacity="0.45" />
+        </svg>
+      )}
       <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] uppercase tracking-[0.12em] text-ash/60">
         {label}
       </span>
@@ -104,7 +123,7 @@ export default function DesignGenealogy() {
             type="button"
           >
             <div className="mx-auto mb-4 flex justify-center">
-              <Portrait active label="NF" />
+              <Portrait active label="NF" src="research/people/naoto-fukasawa.svg" />
             </div>
             <p className="text-3xl font-light text-ink">深泽直人</p>
             <p className="mt-2 text-xs uppercase tracking-[0.18em] text-ash/60">Naoto Fukasawa</p>
@@ -120,7 +139,7 @@ export default function DesignGenealogy() {
               type="button"
             >
               <motion.div animate={{ opacity: active === person.id ? 1 : 0.5 }} className="mb-4">
-                <Portrait active={active === person.id} label={person.en.slice(0, 2)} />
+                <Portrait active={active === person.id} label={person.en.slice(0, 2)} src={person.image} />
               </motion.div>
               <motion.p animate={{ opacity: active === person.id ? 1 : 0.66 }} className="text-2xl font-light text-ink">
                 {person.name}
@@ -138,7 +157,11 @@ export default function DesignGenealogy() {
             transition={{ duration: 0.55, ease: "easeInOut" }}
           >
             <div className="shrink-0">
-              <Portrait active label={activePerson ? activePerson.en.slice(0, 2) : "NF"} />
+              <Portrait
+                active
+                label={activePerson ? activePerson.en.slice(0, 2) : "NF"}
+                src={activePerson ? activePerson.image : "research/people/naoto-fukasawa.svg"}
+              />
             </div>
             <div>
               {activePerson ? (

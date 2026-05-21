@@ -10,13 +10,15 @@ const layers = [
     title: "日本现代工业设计",
     keywords: "战后工业化 / 日常器物 / 生活美学 / 朴素实用",
     text: "日本现代设计在工业生产与日常生活之间寻找平衡，强调物品既要可被生产，也要保留人的使用温度。",
-    visual: "objects"
+    visual: "objects",
+    image: "research/context/context-japan-industrial.svg"
   },
   {
     title: "西方设计方法",
     keywords: "IDEO / 用户观察 / 行为研究 / 问题定义",
     text: "西方设计方法为深泽直人提供了观察用户、分析行为和定义问题的工具。",
-    visual: "method"
+    visual: "method",
+    image: "research/context/context-western-method.png"
   },
   {
     title: "生活方式品牌",
@@ -75,9 +77,27 @@ function ProductCollage() {
   );
 }
 
-function Visual({ type }) {
-  if (type === "objects") return <ObjectsSketch />;
-  if (type === "method") return <MethodSketch />;
+function ResearchImage({ src, fallback }) {
+  const [failed, setFailed] = useState(false);
+
+  if (!src || failed) return fallback;
+
+  return (
+    <div className="relative h-28 w-44 overflow-hidden rounded-[999px] border border-line/35 bg-paper/45">
+      <img
+        alt=""
+        className="h-full w-full object-cover opacity-70 grayscale mix-blend-multiply"
+        onError={() => setFailed(true)}
+        src={asset(src)}
+      />
+      <div className="pointer-events-none absolute inset-0 bg-rice/20" />
+    </div>
+  );
+}
+
+function Visual({ type, image }) {
+  if (type === "objects") return <ResearchImage src={image} fallback={<ObjectsSketch />} />;
+  if (type === "method") return <ResearchImage src={image} fallback={<MethodSketch />} />;
   return <ProductCollage />;
 }
 
@@ -133,7 +153,7 @@ export default function ContextSection() {
                 </motion.p>
               </div>
               <div className="flex items-center justify-center border-l border-line/30 pl-6">
-                <Visual type={layer.visual} />
+                <Visual image={layer.image} type={layer.visual} />
               </div>
             </motion.button>
           ))}

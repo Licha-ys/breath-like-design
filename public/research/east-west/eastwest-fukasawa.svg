@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220">
+  <rect width="360" height="220" fill="#F6F3EC"/>
+  <path d="M58 112c54-44 86 40 122 0s72 42 122 0" fill="none" stroke="#9D6B5C" stroke-width="2" stroke-linecap="round" opacity="0.42"/>
+  <circle cx="180" cy="110" r="62" fill="none" stroke="#C9C4B8" stroke-width="1.5"/>
+  <circle cx="180" cy="110" r="25" fill="#E9D8B8" opacity="0.35"/>
+  <path d="M180 48v124M118 110h124" stroke="#D7D1C5" stroke-width="1"/>
+  <text x="180" y="198" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#77736A" opacity="0.75">observation × harmony</text>
+</svg>

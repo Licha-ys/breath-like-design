@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220">
+  <rect width="360" height="220" fill="#F6F3EC"/>
+  <circle cx="180" cy="110" r="72" fill="none" stroke="#C9C4B8" stroke-width="1.6" opacity="0.8"/>
+  <circle cx="180" cy="110" r="40" fill="none" stroke="#B7926A" stroke-width="1.5" opacity="0.65"/>
+  <path d="M70 122c46-34 74 28 110-8s66 18 110-10" fill="none" stroke="#9D6B5C" stroke-width="1.7" stroke-linecap="round" opacity="0.45"/>
+  <path d="M88 162h58M214 58h64M120 48h44" stroke="#D7D1C5" stroke-width="1.6" opacity="0.8"/>
+  <text x="180" y="198" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#77736A" opacity="0.75">human / object / environment</text>
+</svg>

@@ -2,22 +2,28 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Section from "./Section.jsx";
 
+const BASE = import.meta.env.BASE_URL;
+const asset = (path) => `${BASE}${path.replace(/^\/+/, "")}`;
+
 const panels = {
   west: {
     label: "Western Method",
     title: "西方方法",
+    image: "research/east-west/eastwest-western-method.png",
     keywords: ["功能逻辑", "系统", "效率", "用户研究", "问题定义", "显性需求", "技术理性"],
     text: "西方现代设计更强调功能、结构、效率和可验证的方法。它帮助设计师拆解问题、观察用户、建立系统。"
   },
   center: {
     label: "Naoto Fukasawa",
     title: "深泽直人",
+    image: "research/east-west/eastwest-fukasawa.svg",
     keywords: ["Observation × Harmony", "Behavior × Emptiness", "Function × Atmosphere", "Product × Environment"],
     text: "深泽直人将二者调和：用观察方法发现人的无意识动作，用东方的留白与克制让物自然进入环境。"
   },
   east: {
     label: "Eastern Relation",
     title: "东方关系",
+    image: "research/east-west/eastwest-eastern-relation.svg",
     keywords: ["留白", "克制", "日常", "物我合一", "身体感受", "低存在感", "环境调和"],
     text: "东方设计更强调人与物、物与环境之间的关系。它不急于突出设计，而是让物安静地融入生活。"
   }
@@ -66,10 +72,28 @@ function EasternVisual() {
   );
 }
 
-function PanelVisual({ type }) {
-  if (type === "west") return <WesternVisual />;
-  if (type === "center") return <CenterVisual />;
-  return <EasternVisual />;
+function ResearchPlate({ src, fallback }) {
+  const [failed, setFailed] = useState(false);
+
+  if (!src || failed) return fallback;
+
+  return (
+    <div className="relative mb-8 h-36 w-full overflow-hidden rounded-[999px] border border-line/35 bg-paper/45">
+      <img
+        alt=""
+        className="h-full w-full object-cover opacity-70 grayscale mix-blend-multiply"
+        onError={() => setFailed(true)}
+        src={asset(src)}
+      />
+      <div className="pointer-events-none absolute inset-0 bg-rice/20" />
+    </div>
+  );
+}
+
+function PanelVisual({ type, image }) {
+  if (type === "west") return <ResearchPlate src={image} fallback={<WesternVisual />} />;
+  if (type === "center") return <ResearchPlate src={image} fallback={<CenterVisual />} />;
+  return <ResearchPlate src={image} fallback={<EasternVisual />} />;
 }
 
 export default function EastWestSection() {
@@ -105,7 +129,7 @@ export default function EastWestSection() {
                 type="button"
               >
                 {key === "center" && <span className="absolute inset-y-8 left-1/2 w-px bg-line/40" />}
-                <PanelVisual type={key} />
+                <PanelVisual image={panel.image} type={key} />
                 <p className="text-xs uppercase tracking-[0.28em] text-ash/55">{panel.label}</p>
                 <h3 className="mt-6 text-3xl font-light text-ink">{panel.title}</h3>
                 <div className="mt-8 flex flex-wrap gap-3">
