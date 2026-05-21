@@ -2,23 +2,84 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Section from "./Section.jsx";
 
+const BASE = import.meta.env.BASE_URL;
+const asset = (path) => `${BASE}${path.replace(/^\/+/, "")}`;
+
 const layers = [
   {
     title: "日本现代工业设计",
     keywords: "战后工业化 / 日常器物 / 生活美学 / 朴素实用",
-    text: "日本现代设计在工业生产与日常生活之间寻找平衡，强调物品既要可被生产，也要保留人的使用温度。"
+    text: "日本现代设计在工业生产与日常生活之间寻找平衡，强调物品既要可被生产，也要保留人的使用温度。",
+    visual: "objects"
   },
   {
     title: "西方设计方法",
     keywords: "IDEO / 用户观察 / 行为研究 / 问题定义",
-    text: "西方设计方法为深泽直人提供了观察用户、分析行为和定义问题的工具。"
+    text: "西方设计方法为深泽直人提供了观察用户、分析行为和定义问题的工具。",
+    visual: "method"
   },
   {
     title: "生活方式品牌",
     keywords: "MUJI / ±0 / au KDDI / maruni / HAY",
-    text: "这些品牌和产品语境让深泽直人的理念从个人思考转化为具体的生活产品。"
+    text: "这些品牌和产品语境让深泽直人的理念从个人思考转化为具体的生活产品。",
+    visual: "collage"
   }
 ];
+
+function ObjectsSketch() {
+  return (
+    <svg className="h-28 w-40 opacity-75" viewBox="0 0 180 120">
+      <path d="M22 76 H74 V98 H22 Z" fill="none" stroke="#B7926A" strokeWidth="1.2" />
+      <path d="M34 76 V54 C34 38 62 38 62 54 V76" fill="none" stroke="#C9C4B8" strokeWidth="1.2" />
+      <path d="M102 28 C126 28 145 47 145 71 C145 92 130 104 108 104 H94 V28 Z" fill="none" stroke="#9A948A" strokeWidth="1.2" />
+      <path d="M112 42 H154 M112 60 H154 M112 78 H154" stroke="#D7D1C5" strokeWidth="1" />
+      <circle cx="88" cy="68" r="20" fill="none" stroke="#DDE4E2" strokeWidth="1.2" />
+    </svg>
+  );
+}
+
+function MethodSketch() {
+  return (
+    <svg className="h-28 w-40 opacity-75" viewBox="0 0 180 120">
+      <path d="M22 28 H70 V56 H22 Z M108 24 H154 V52 H108 Z M72 78 H132 V104 H72 Z" fill="none" stroke="#C9C4B8" strokeWidth="1" />
+      <path d="M70 42 C88 42 90 38 108 38 M46 56 C54 78 58 91 72 91 M132 52 C134 70 134 76 132 78" fill="none" stroke="#B7926A" strokeWidth="1" />
+      <circle cx="46" cy="42" r="5" fill="#E9D8B8" opacity="0.7" />
+      <circle cx="132" cy="38" r="5" fill="#DDE4E2" opacity="0.8" />
+      <circle cx="102" cy="91" r="5" fill="#9D6B5C" opacity="0.35" />
+      <path d="M24 72 H46 M24 82 H58 M24 92 H48" stroke="#D7D1C5" strokeWidth="1" />
+    </svg>
+  );
+}
+
+function ProductCollage() {
+  const images = [
+    ["products/wall-cd-player.png?v=2", "left-2 top-7 w-14"],
+    ["products/humidifier.png?v=2", "left-16 top-14 w-16"],
+    ["products/infobar.png?v=2", "left-28 top-3 h-20"],
+    ["products/hiroshima-chair.png?v=2", "left-7 bottom-3 w-20"],
+    ["products/pao-lamp.png?v=2", "right-4 bottom-4 w-16"]
+  ];
+
+  return (
+    <div className="relative h-28 w-44 opacity-80">
+      <div className="absolute inset-4 rounded-full border border-line/40" />
+      {images.map(([src, className]) => (
+        <img
+          alt=""
+          className={`absolute object-contain opacity-70 grayscale mix-blend-multiply ${className}`}
+          key={src}
+          src={asset(src)}
+        />
+      ))}
+    </div>
+  );
+}
+
+function Visual({ type }) {
+  if (type === "objects") return <ObjectsSketch />;
+  if (type === "method") return <MethodSketch />;
+  return <ProductCollage />;
+}
 
 export default function ContextSection() {
   const [active, setActive] = useState(0);
@@ -47,8 +108,8 @@ export default function ContextSection() {
         <div className="space-y-5">
           {layers.map((layer, index) => (
             <motion.button
-              animate={{ opacity: active === index ? 1 : 0.62 }}
-              className="group w-full border-y border-line/45 bg-rice/20 px-6 py-7 text-left transition-colors duration-700 hover:bg-rice/35"
+              animate={{ opacity: active === index ? 1 : 0.68 }}
+              className="group grid w-full gap-6 border-y border-line/45 bg-rice/20 px-6 py-6 text-left transition-colors duration-700 hover:bg-rice/35 md:grid-cols-[1fr_auto]"
               initial={{ opacity: 0, y: 20 }}
               key={layer.title}
               onFocus={() => setActive(index)}
@@ -56,24 +117,24 @@ export default function ContextSection() {
               transition={{ delay: index * 0.12, duration: 0.85, ease: "easeInOut" }}
               type="button"
               viewport={{ once: true }}
-              whileInView={{ opacity: active === index ? 1 : 0.72, y: 0 }}
+              whileInView={{ opacity: active === index ? 1 : 0.76, y: 0 }}
             >
-              <div className="flex items-start justify-between gap-6">
-                <div>
-                  <p className="text-2xl font-light text-ink">{layer.title}</p>
-                  <p className="mt-3 text-xs leading-6 tracking-[0.18em] text-ash/60">
-                    {layer.keywords}
-                  </p>
-                </div>
-                <span className="mt-2 h-px w-16 bg-line transition-colors duration-700 group-hover:bg-wood/70" />
+              <div>
+                <p className="text-2xl font-light text-ink">{layer.title}</p>
+                <p className="mt-3 text-xs leading-6 tracking-[0.18em] text-ash/60">
+                  {layer.keywords}
+                </p>
+                <motion.p
+                  animate={{ opacity: active === index ? 1 : 0, y: active === index ? 0 : 8 }}
+                  className="mt-5 max-w-2xl text-sm font-light leading-7 text-ash"
+                  transition={{ duration: 0.55, ease: "easeInOut" }}
+                >
+                  {layer.text}
+                </motion.p>
               </div>
-              <motion.p
-                animate={{ opacity: active === index ? 1 : 0, y: active === index ? 0 : 8 }}
-                className="mt-6 max-w-2xl text-sm font-light leading-7 text-ash"
-                transition={{ duration: 0.55, ease: "easeInOut" }}
-              >
-                {layer.text}
-              </motion.p>
+              <div className="flex items-center justify-center border-l border-line/30 pl-6">
+                <Visual type={layer.visual} />
+              </div>
             </motion.button>
           ))}
         </div>

@@ -5,7 +5,7 @@ import Section from "./Section.jsx";
 const people = [
   {
     id: "soetsu",
-    side: "left-[5%] top-[10%]",
+    side: "left-[5%] top-[8%]",
     name: "柳宗悦",
     en: "Soetsu Yanagi",
     role: "民艺思想提出者",
@@ -14,7 +14,7 @@ const people = [
   },
   {
     id: "sori",
-    side: "left-[12%] top-[43%]",
+    side: "left-[12%] top-[40%]",
     name: "柳宗理",
     en: "Sori Yanagi",
     role: "日本现代工业设计代表人物",
@@ -32,7 +32,7 @@ const people = [
   },
   {
     id: "ideo",
-    side: "right-[7%] top-[18%]",
+    side: "right-[7%] top-[16%]",
     name: "IDEO",
     en: "Design Method",
     role: "西方用户观察与设计研究方法",
@@ -41,7 +41,7 @@ const people = [
   },
   {
     id: "morrison",
-    side: "right-[5%] bottom-[16%]",
+    side: "right-[5%] bottom-[14%]",
     name: "Jasper Morrison",
     en: "British Industrial Designer",
     role: "Super Normal 共同提出者",
@@ -49,6 +49,21 @@ const people = [
     text: "Jasper Morrison 与深泽直人共同提出 Super Normal，强调普通物品在长期使用中的价值，而不是设计师自我风格的炫耀。"
   }
 ];
+
+function Portrait({ active = false, label = "" }) {
+  return (
+    <div className={`relative h-16 w-16 overflow-hidden rounded-full border ${active ? "border-wood/70" : "border-line/60"} bg-paper/60`}>
+      <svg className="h-full w-full opacity-75 grayscale" viewBox="0 0 80 80">
+        <circle cx="40" cy="28" r="13" fill="#C9C4B8" opacity="0.9" />
+        <path d="M18 72 C22 50 58 50 62 72" fill="#B7926A" opacity="0.38" />
+        <path d="M24 22 C30 10 52 10 58 24" fill="none" stroke="#77736A" strokeWidth="1" opacity="0.45" />
+      </svg>
+      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] uppercase tracking-[0.12em] text-ash/60">
+        {label}
+      </span>
+    </div>
+  );
+}
 
 export default function DesignGenealogy() {
   const [active, setActive] = useState("fukasawa");
@@ -73,21 +88,24 @@ export default function DesignGenealogy() {
           </p>
         </motion.div>
 
-        <div className="relative min-h-[620px] border-y border-line/45">
-          <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1100 620" preserveAspectRatio="none">
-            <path d="M240 118 C360 180 430 226 548 302" fill="none" stroke="#C9C4B8" strokeWidth="0.8" />
-            <path d="M300 314 C405 300 460 300 548 302" fill="none" stroke="#C9C4B8" strokeWidth="0.8" />
-            <path d="M250 518 C365 430 452 362 548 302" fill="none" stroke="#C9C4B8" strokeWidth="0.8" />
-            <path d="M846 160 C730 220 650 260 552 302" fill="none" stroke="#C9C4B8" strokeWidth="0.8" />
-            <path d="M848 470 C730 410 650 350 552 302" fill="none" stroke="#C9C4B8" strokeWidth="0.8" />
+        <div className="relative min-h-[660px] border-y border-line/45">
+          <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1100 660" preserveAspectRatio="none">
+            <path d="M240 128 C360 190 430 236 548 322" fill="none" stroke="#C9C4B8" strokeWidth="0.8" />
+            <path d="M300 330 C405 318 460 316 548 322" fill="none" stroke="#C9C4B8" strokeWidth="0.8" />
+            <path d="M250 540 C365 450 452 382 548 322" fill="none" stroke="#C9C4B8" strokeWidth="0.8" />
+            <path d="M846 170 C730 230 650 280 552 322" fill="none" stroke="#C9C4B8" strokeWidth="0.8" />
+            <path d="M848 488 C730 430 650 370 552 322" fill="none" stroke="#C9C4B8" strokeWidth="0.8" />
           </svg>
 
           <button
-            className="absolute left-1/2 top-1/2 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border border-wood/45 bg-rice/60 px-8 py-10 text-center backdrop-blur-sm"
+            className="absolute left-1/2 top-[47%] w-60 -translate-x-1/2 -translate-y-1/2 rounded-full border border-wood/45 bg-rice/65 px-8 py-8 text-center backdrop-blur-sm"
             onFocus={() => setActive("fukasawa")}
             onMouseEnter={() => setActive("fukasawa")}
             type="button"
           >
+            <div className="mx-auto mb-4 flex justify-center">
+              <Portrait active label="NF" />
+            </div>
             <p className="text-3xl font-light text-ink">深泽直人</p>
             <p className="mt-2 text-xs uppercase tracking-[0.18em] text-ash/60">Naoto Fukasawa</p>
             <p className="mt-5 text-sm leading-7 text-ash">Without Thought / 身体记忆 / 人—物—环境</p>
@@ -95,14 +113,16 @@ export default function DesignGenealogy() {
 
           {people.map((person) => (
             <button
-              className={`absolute max-w-[230px] text-left ${person.side}`}
+              className={`absolute max-w-[245px] text-left ${person.side}`}
               key={person.id}
               onFocus={() => setActive(person.id)}
               onMouseEnter={() => setActive(person.id)}
               type="button"
             >
-              <motion.span animate={{ opacity: active === person.id ? 1 : 0.45 }} className="mb-4 block h-2.5 w-2.5 rounded-full border border-wood/60 bg-rice" />
-              <motion.p animate={{ opacity: active === person.id ? 1 : 0.62 }} className="text-2xl font-light text-ink">
+              <motion.div animate={{ opacity: active === person.id ? 1 : 0.5 }} className="mb-4">
+                <Portrait active={active === person.id} label={person.en.slice(0, 2)} />
+              </motion.div>
+              <motion.p animate={{ opacity: active === person.id ? 1 : 0.66 }} className="text-2xl font-light text-ink">
                 {person.name}
               </motion.p>
               <p className="mt-1 text-xs uppercase tracking-[0.16em] text-ash/55">{person.en}</p>
@@ -111,25 +131,30 @@ export default function DesignGenealogy() {
           ))}
 
           <motion.div
-            className="absolute bottom-8 left-1/2 w-[min(90%,620px)] -translate-x-1/2 border border-line/45 bg-rice/70 p-6 backdrop-blur-sm"
+            className="absolute bottom-7 left-1/2 flex w-[min(90%,660px)] -translate-x-1/2 gap-5 border border-line/45 bg-rice/75 p-6 backdrop-blur-sm"
             key={active}
             animate={{ opacity: 1, y: 0 }}
             initial={{ opacity: 0, y: 12 }}
             transition={{ duration: 0.55, ease: "easeInOut" }}
           >
-            {activePerson ? (
-              <>
-                <p className="text-xs uppercase tracking-[0.2em] text-ash/55">{activePerson.role}</p>
-                <p className="mt-3 text-sm leading-7 text-ash">{activePerson.text}</p>
-              </>
-            ) : (
-              <>
-                <p className="text-xs uppercase tracking-[0.2em] text-ash/55">中心关系</p>
-                <p className="mt-3 text-sm leading-7 text-ash">
-                  深泽直人进一步将日常器物中的自然性转化为对无意识行为的观察，让产品在使用中自然显现价值。
-                </p>
-              </>
-            )}
+            <div className="shrink-0">
+              <Portrait active label={activePerson ? activePerson.en.slice(0, 2) : "NF"} />
+            </div>
+            <div>
+              {activePerson ? (
+                <>
+                  <p className="text-xs uppercase tracking-[0.2em] text-ash/55">{activePerson.role}</p>
+                  <p className="mt-3 text-sm leading-7 text-ash">{activePerson.text}</p>
+                </>
+              ) : (
+                <>
+                  <p className="text-xs uppercase tracking-[0.2em] text-ash/55">中心关系</p>
+                  <p className="mt-3 text-sm leading-7 text-ash">
+                    深泽直人进一步将日常器物中的自然性转化为对无意识行为的观察，让产品在使用中自然显现价值。
+                  </p>
+                </>
+              )}
+            </div>
           </motion.div>
         </div>
       </div>
